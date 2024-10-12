@@ -46,15 +46,15 @@
 
 5. Faça o build:
 
-```bash
-pnpm build
-```
+   ```bash
+   pnpm build
+   ```
 
-5. Inicie a aplicação:
+6. Inicie a aplicação:
 
-```bash
-pnpm start
-```
+   ```bash
+   pnpm start
+   ```
 
 A aplicação estará rodando em `http://localhost:3000`.
 
