@@ -35,14 +35,56 @@
 
    ```env
    DISCORD_WEBHOOK_URL=your_webhook_url_here
+   TAGARELA_SECRET=your_secret_api_key_here
    ```
 
-4. Inicie a aplicação:
+4. Inicie a aplicação em modo de desenvolvimento:
+
    ```bash
-   pnpm start
+   pnpm dev
    ```
+
+5. Faça o build:
+
+```bash
+pnpm build
+```
+
+5. Inicie a aplicação:
+
+```bash
+pnpm start
+```
 
 A aplicação estará rodando em `http://localhost:3000`.
+
+## 🚀 Fazendo o build da aplicação
+
+A aplicação já está com o `Dockerfile` e o `docker-compose.yaml` devidamente configurados.
+
+Para rodar o projeto no docker execute:
+
+```bash
+docker compose up --build
+```
+
+> Certifique-se que realizou a build do projeto.
+
+## 🤖 Configure seu arquivo de testes
+
+1. Renomeie o arquivo `test.example.sh` para `test.sh`
+2. Adicione permissão
+
+```bash
+chmod +x .teste.sh
+```
+
+3. Incluia a sua `api-key`
+4. Execute o teste
+
+```bash
+chmod +x .teste.sh
+```
 
 ## 🚀 Como Usar
 
@@ -57,7 +99,7 @@ Envie uma requisição POST para o endpoint `/send` com o seguinte corpo:
 ### Exemplo usando `curl`:
 
 ```bash
-curl -X POST http://localhost:3000/send -H "Content-Type: application/json" -d '{"message": "Hello Discord!"}'
+curl -X POST http://localhost:3000/send -H "Content-Type: application/json" -H "api-key: XXX" -d '{"message": "Hello Discord!"}'
 ```
 
 ## 🔗 Criando um Webhook no Discord
