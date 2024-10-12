@@ -1,6 +1,6 @@
 # Tagarela
 
-# ![Bot Avatar](./assets/tagerela.jpeg) Discord Monitor Bot
+# ![Bot Avatar](assets/tagarela.jpeg) Discord Monitor Bot
 
 🚀 **Discord Monitor Bot** é uma aplicação open source construída em NodeJS e Express que permite o envio de mensagens para um canal específico no Discord através de um endpoint `/send`. O objetivo deste projeto é simplificar o processo de integração com o Discord, facilitando a comunicação de eventos e alertas diretamente em um canal configurado.
 
