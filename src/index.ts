@@ -31,18 +31,11 @@ app.post("/send", async (req: any, res: any) => {
     return res.status(401).send("🚨 You shall not pass!");
   }
 
-  if (!content) {
-    logger.error(`🚨 Someone trying send without content\n`);
-    return res
-      .status(400)
-      .send("🚨 You need to provide a content to be sended on that channel");
-  }
-
   try {
     const payload = {
       ...(username && { username }),
       ...(avatar_url && { avatar_url }),
-      content,
+      ...(content && { content }),
       ...(embeds && { embeds }),
     };
     await axios.post(discordWebhookUrl, payload);

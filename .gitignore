@@ -132,6 +132,7 @@ dist
 # Test File
 test.sh
 test.simple.sh
+test.v3.sh
 
 # MacOS
 .DS_Store
