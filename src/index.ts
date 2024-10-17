@@ -21,7 +21,7 @@ if (!secret) {
 app.use(express.json());
 
 app.post("/send", async (req: any, res: any) => {
-  const { message } = req.body;
+  const { content, embeds, username, avatar_url } = req.body;
   const signature = req.headers["api-key"];
 
   if (!signature || signature !== secret) {
@@ -31,18 +31,22 @@ app.post("/send", async (req: any, res: any) => {
     return res.status(401).send("🚨 You shall not pass!");
   }
 
-  if (!message) {
-    logger.error(`🚨 Someone trying send without message\n`);
+  if (!content) {
+    logger.error(`🚨 Someone trying send without content\n`);
     return res
       .status(400)
-      .send("🚨 You need to provide a message to be sended on that channel");
+      .send("🚨 You need to provide a content to be sended on that channel");
   }
 
   try {
-    await axios.post(discordWebhookUrl, {
-      content: message,
-    });
-    logger.info(`🎉 ${message} has sucessfuly sent\n`);
+    const payload = {
+      ...(username && { username }),
+      ...(avatar_url && { avatar_url }),
+      content,
+      ...(embeds && { embeds }),
+    };
+    await axios.post(discordWebhookUrl, payload);
+    logger.info(`🎉 ${payload} has sucessfuly sent\n`);
     return res.status(200).send("🎉 Message has sucessfully sent");
   } catch (error) {
     console.error(`😢 Oops, something wrong here: ${error}\n`);
