@@ -39,7 +39,7 @@ app.post("/send", async (req: any, res: any) => {
       ...(embeds && { embeds }),
     };
     await axios.post(discordWebhookUrl, payload);
-    logger.info(`🎉 ${payload} has sucessfuly sent\n`);
+    logger.info(`🎉 ${JSON.stringify(payload)} has sucessfuly sent\n`);
     return res.status(200).send("🎉 Message has sucessfully sent");
   } catch (error) {
     console.error(`😢 Oops, something wrong here: ${error}\n`);
