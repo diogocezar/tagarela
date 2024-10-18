@@ -3,7 +3,9 @@ import axios from "axios";
 import dotenv from "dotenv";
 import logger from "./logger";
 
-dotenv.config();
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config();
+}
 
 const app = express();
 const port = 3000;
